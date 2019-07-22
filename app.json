@@ -1,0 +1,38 @@
+{
+  "name": "keeper",
+  "scripts": {
+  },
+  "env": {
+    "CLUBHOUSE_API_KEY": {
+      "required": true
+    },
+    "GECKOBOARD_API_KEY": {
+      "required": true
+    },
+    "OAUTH2_PROXY_CLIENT_ID": {
+      "required": true
+    },
+    "OAUTH2_PROXY_CLIENT_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/danp/heroku-buildpack-runit"
+    },
+    {
+      "url": "https://github.com/niteoweb/heroku-buildpack-shell"
+    }
+  ]
+}
