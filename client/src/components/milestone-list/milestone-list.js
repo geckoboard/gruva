@@ -1,19 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import { categoriseMilestones } from '../../helpers';
 
 const MilestoneList = props => {
   const { match, milestones } = props;
+  const categorisedMilestones = categoriseMilestones(milestones);
+
   return (
-    <ul>
-      {milestones.map(({ id, name }) => {
-        return (
-          <li key={id}>
-            <Link to={`${match.url}/${id}`}>{name}</Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      <div>
+        <h2>In progress</h2>
+        <ul>
+          {categorisedMilestones.started.map(({ id, name }) => {
+            return (
+              <li key={id}>
+                <Link to={`${match.url}/${id}`}>{name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div>
+        <h2>Ready</h2>
+        <ul>
+          {categorisedMilestones.ready.map(({ id, name }) => {
+            return (
+              <li key={id}>
+                <Link to={`${match.url}/${id}`}>{name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div>
+        <h2>Done</h2>
+        <ul>
+          {categorisedMilestones.completed.map(({ id, name }) => {
+            return (
+              <li key={id}>
+                <Link to={`${match.url}/${id}`}>{name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
   );
 };
 
