@@ -2,15 +2,13 @@ const request = require('request-promise');
 const { milestonesEpics } = require('./helpers');
 const { API_URL, API_KEY } = require('./constants');
 
-const list = (req, res, next) => {
+const forMilestone = (req, res, next) => {
   const qs = {
     token: API_KEY,
     page_size: 25,
     query: req.query.query,
     next: req.query.next,
   };
-
-
 
   const options = {
     uri: `${API_URL}/&query=milestone:3227`,
@@ -28,4 +26,4 @@ const list = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = { list };
+module.exports = { forMilestone };

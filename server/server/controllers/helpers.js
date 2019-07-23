@@ -3,9 +3,9 @@ const whitelistMilestone = milestone => ({
   name: milestone.name,
 });
 
-const milestonesEpics = epics => ({
-  id: epics.id,
-  name: epics.name,
+const milestonesEpics = whitelistEpics => ({
+  id: epic.id,
+  name: epic.name,
 });
 
 module.exports = {
