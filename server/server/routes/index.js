@@ -8,4 +8,5 @@ module.exports = app => {
   );
 
   app.get('/milestones', milestonesController.list);
+  app.get('/milestones/epics/:milestone_id', milestonesController.list);
 };
