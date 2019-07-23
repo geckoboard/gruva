@@ -1,5 +1,7 @@
 import { API, apiRequest, getJSON } from './utils';
 
-const getMilestones = () => apiRequest(`${API}/milestones`).then(getJSON);
+const getMilestones = () => {
+  return apiRequest(`${API}/milestones`).then(getJSON);
+};
 
 export { getMilestones as get };

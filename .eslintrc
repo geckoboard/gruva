@@ -10,6 +10,11 @@
   "rules": {
     "prettier/prettier": ["error"]
   },
+  "settings": {
+    "react": {
+      "version": "detect",
+    }
+  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 6,

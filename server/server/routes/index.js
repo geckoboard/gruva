@@ -7,5 +7,5 @@ module.exports = app => {
     }),
   );
 
-  app.get('/milestones', milestonesController.list);
+  app.get('/api/milestones', milestonesController.list);
 };
