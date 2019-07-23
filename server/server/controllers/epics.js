@@ -7,11 +7,13 @@ const forMilestone = (req, res, next) => {
     token: API_KEY,
     page_size: 25,
     query: req.query.query,
-    next: req.query.next,
+//    next: req.query.next,
   };
 
   const options = {
-    uri: `${API_URL}/&query=milestone:3227`,
+    uri: `${API_URL}/search/epics?query=epic:2671`,
+
+    console.log(uri)
 
     qs,
     json: true,
