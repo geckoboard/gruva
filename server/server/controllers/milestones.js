@@ -18,9 +18,7 @@ const list = (req, res, next) => {
 
   return request(options)
     .then((milestones = []) => {
-      res.status(200).send({
-        data: milestones.map(whitelistMilestone),
-      });
+      res.status(200).send(milestones.map(whitelistMilestone));
     })
     .catch(next);
 };

@@ -53,6 +53,9 @@ module.exports = {
       chunks: 'all'
     }
   },
+  output: {
+    publicPath: '/'
+  },
   module: {
     rules: [
       {
@@ -64,7 +67,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: isProd 
+        use: isProd
           ? [ MiniCssExtractPlugin.loader, CSSLoader ]
           : [ "style-loader", CSSLoader ],
       },
