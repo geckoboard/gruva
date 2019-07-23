@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-solid-svg-icons';
+import { categoriseMilestones } from '../../helpers';
 import styles from './milestone-picker.css';
 
 const MilestonePicker = props => {
@@ -21,6 +22,7 @@ const MilestonePicker = props => {
   }
 
   const { name } = selectedMilestone;
+  const categorisedMilestones = categoriseMilestones(milestones);
 
   const onSelect = event => {
     history.push(`/milestones/${event.target.value}`);
@@ -40,14 +42,27 @@ const MilestonePicker = props => {
         value={selectedMilestoneId}
         onChange={onSelect}
       >
-        <option disabled value={-1}>
-          Select milestones
-        </option>
-        {milestones.map(({ id, name }) => (
-          <option key={id} value={id}>
-            {name}
-          </option>
-        ))}
+        <optgroup label="In progress">
+          {categorisedMilestones.started.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </optgroup>
+        <optgroup label="Ready">
+          {categorisedMilestones.ready.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </optgroup>
+        <optgroup label="Done">
+          {categorisedMilestones.completed.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </optgroup>
       </select>
     </div>
   );
