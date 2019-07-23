@@ -6,8 +6,6 @@ const list = (req, res, next) => {
   const qs = {
     token: API_KEY,
     page_size: 25,
-    query: req.query.query,
-    next: req.query.next,
   };
 
   const options = {

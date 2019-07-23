@@ -5,6 +5,12 @@ const whitelistMilestone = milestone => ({
   started: milestone.started,
 });
 
+const whitelistEpic = epic => ({
+  id: epic.id,
+  name: epic.name,
+});
+
 module.exports = {
   whitelistMilestone,
+  whitelistEpic,
 };
