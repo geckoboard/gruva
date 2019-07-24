@@ -11,7 +11,7 @@ class MilestonesPage extends Component {
   renderPage() {
     return (
       <div>
-        <h3>Please select a milestone.</h3>
+        <h1>Milestones</h1>
         <MilestoneList />
       </div>
     );

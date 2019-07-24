@@ -1,3 +1,5 @@
+import { sortBy } from 'lodash';
+
 const categoriseMilestones = milestones => {
   const categorised = milestones.reduce(
     (categorised, milestone) => {
@@ -18,9 +20,9 @@ const categoriseMilestones = milestones => {
     },
   );
 
-  categorised.ready.sort();
-  categorised.started.sort();
-  categorised.completed.sort();
+  categorised.ready = sortBy(categorised.ready, 'name');
+  categorised.started = sortBy(categorised.started, 'name');
+  categorised.completed = sortBy(categorised.completed, 'name');
 
   return categorised;
 };

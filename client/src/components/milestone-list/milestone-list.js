@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { categoriseMilestones } from '../../helpers';
+import styles from './milestone-list.css';
 
 const MilestoneList = props => {
   const { match, milestones } = props;
   const categorisedMilestones = categoriseMilestones(milestones);
 
   return (
-    <div>
+    <div className={styles.list}>
       <div>
         <h2>In progress</h2>
         <ul>

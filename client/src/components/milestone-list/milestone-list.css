@@ -1,0 +1,16 @@
+.list {
+
+}
+
+.list ul {
+  list-style: none;
+}
+
+.list a {
+  color: #4A4A4A;
+  text-decoration: none;
+}
+
+.list a:hover {
+  color: #000000;
+}
