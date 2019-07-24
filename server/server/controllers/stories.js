@@ -1,9 +1,10 @@
 const request = require('request-promise');
-const { whitelistEpic } = require('./helpers');
+const { whitelistStory } = require('./helpers');
 const { API_URL, API_KEY } = require('./constants');
 
 const forMilestone = (req, res, next) => {
   const { milestone_id } = req.params;
+
   const qs = {
     token: API_KEY,
     page_size: 25,
@@ -12,16 +13,16 @@ const forMilestone = (req, res, next) => {
   };
 
   const options = {
-    uri: `${API_URL}/search/epics`,
+    uri: `${API_URL}/search/stories`,
     qs,
     json: true,
   };
 
   return request(options)
-    .then(epics => {
+    .then(stories => {
       res.status(200).send({
-        ...epics,
-        data: epics.data.map(whitelistEpic),
+        ...stories,
+        data: stories.data.map(whitelistStory),
       });
     })
     .catch(next);

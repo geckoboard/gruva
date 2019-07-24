@@ -7,10 +7,26 @@ const whitelistMilestone = milestone => ({
 
 const whitelistEpic = epic => ({
   id: epic.id,
+  stats: epic.stats,
   name: epic.name,
+  archived: epic.archived,
+  completed: epic.completed,
+  started: epic.started,
+  updated_at: epic.updated_at,
+});
+
+const whitelistStory = story => ({
+  id: story.id,
+  name: story.name,
+  archived: story.archived,
+  completed: story.completed,
+  started: story.started,
+  updated_at: story.updated_at,
+  epic_id: story.epic_id,
 });
 
 module.exports = {
   whitelistMilestone,
   whitelistEpic,
+  whitelistStory,
 };

@@ -1,6 +1,6 @@
 import { sortBy } from 'lodash';
 
-const categoriseMilestones = milestones => {
+export const categoriseMilestones = milestones => {
   const categorised = milestones.reduce(
     (categorised, milestone) => {
       if (milestone.completed) {
@@ -26,5 +26,3 @@ const categoriseMilestones = milestones => {
 
   return categorised;
 };
-
-export { categoriseMilestones };
