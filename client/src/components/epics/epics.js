@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './epics.css';
+import { sortBy } from 'lodash';
 import Epic from '../epic';
+import styles from './epics.css';
+
+const sortEpics = epics => {
+  return sortBy(epics.filter(epic => !epic.archived), 'position');
+};
 
 class Epics extends Component {
   componentDidMount() {
@@ -19,20 +24,17 @@ class Epics extends Component {
   }
 
   render() {
-    const { epics, milestoneId } = this.props;
+    const { epics, isLoading, milestoneId } = this.props;
 
-    if (!epics) {
-      return <div>Loading epics...</div>;
-    }
-
-    if (!epics.length) {
+    if (!isLoading && !epics.length) {
       return <div>No epics for this milestone</div>;
     }
 
+    const sortedEpics = sortEpics(epics);
+
     return (
       <div className={styles.epics}>
-        <h3>Epics</h3>
-        {epics.map(epic => (
+        {sortedEpics.map(epic => (
           <Epic key={epic.id} epic={epic} milestoneId={milestoneId} />
         ))}
       </div>
@@ -40,10 +42,15 @@ class Epics extends Component {
   }
 }
 
+Epics.defaultProps = {
+  epics: [],
+};
+
 Epics.propTypes = {
   epics: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.string, name: PropTypes.string }),
   ),
+  isLoading: PropTypes.bool,
   milestoneId: PropTypes.string,
   fetchData: PropTypes.func,
 };

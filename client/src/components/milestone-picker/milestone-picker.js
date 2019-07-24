@@ -10,7 +10,7 @@ const MilestonePicker = props => {
   const { history, milestones, selectedMilestoneId } = props;
 
   if (!milestones.length) {
-    return <div>Loading</div>;
+    return <div>Loading milestones...</div>;
   }
 
   const selectedMilestone = milestones.find(
@@ -49,7 +49,7 @@ const MilestonePicker = props => {
             </option>
           ))}
         </optgroup>
-        <optgroup label="Ready">
+        <optgroup label="To do">
           {categorisedMilestones.ready.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
