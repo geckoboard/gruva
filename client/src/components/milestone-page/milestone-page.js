@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MilestonePicker from '../milestone-picker';
+import Epics from '../epics';
 
 const MilestonePage = props => {
-  const { match } = props;
+  const {
+    match: {
+      params: { milestoneId },
+    },
+  } = props;
 
   return (
     <div>
-      <MilestonePicker selectedMilestoneId={match.params.milestoneId} />
+      <MilestonePicker selectedMilestoneId={milestoneId} />
+      <Epics milestoneId={milestoneId} />
     </div>
   );
 };
 
 MilestonePage.propTypes = {
   match: PropTypes.object,
-  milestoneId: PropTypes.string,
 };
 
 export default MilestonePage;

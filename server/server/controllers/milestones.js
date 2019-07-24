@@ -5,7 +5,6 @@ const { API_URL, API_KEY } = require('./constants');
 const list = (req, res, next) => {
   const qs = {
     token: API_KEY,
-    page_size: 25,
   };
 
   const options = {

@@ -26,6 +26,14 @@ export const apiRequest = (url, options = {}) => {
   return fetch(url, merge(options, sharedOptions));
 };
 
+export const getClubhouseSearch = (url, next) => {
+  if (next) {
+    url += `?next=${next}`;
+  }
+
+  return apiRequest(url).then(getJSON);
+};
+
 export const API =
   process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api' : '/api';
 
