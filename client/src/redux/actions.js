@@ -16,7 +16,7 @@ export const fetchEpics = createThunk(
       res => dispatch(epicsReceived({ milestoneId, epics: res.data })),
     );
 
-    return request;
+    return request.then(() => milestoneId);
   },
 );
 

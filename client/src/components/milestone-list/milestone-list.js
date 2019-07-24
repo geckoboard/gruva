@@ -23,7 +23,7 @@ const MilestoneList = props => {
         </ul>
       </div>
       <div>
-        <h2>Ready</h2>
+        <h2>To do</h2>
         <ul>
           {categorisedMilestones.ready.map(({ id, name }) => {
             return (

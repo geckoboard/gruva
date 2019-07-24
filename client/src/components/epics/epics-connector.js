@@ -4,12 +4,13 @@ import Epics from './epics';
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    epics: { byMilestoneId: epics },
+    epics: { byMilestoneId: epics, loadingMilestoneIds },
   } = state;
   const { milestoneId } = ownProps;
 
   return {
     epics: epics[milestoneId],
+    isLoading: loadingMilestoneIds.includes(milestoneId),
   };
 };
 

@@ -13,16 +13,18 @@ const whitelistEpic = epic => ({
   completed: epic.completed,
   started: epic.started,
   updated_at: epic.updated_at,
+  position: epic.position,
 });
 
 const whitelistStory = story => ({
   id: story.id,
+  epic_id: story.epic_id,
   name: story.name,
   archived: story.archived,
   completed: story.completed,
   started: story.started,
   updated_at: story.updated_at,
-  epic_id: story.epic_id,
+  position: story.position,
 });
 
 module.exports = {

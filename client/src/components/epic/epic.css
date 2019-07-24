@@ -1,3 +1,5 @@
 .epic {
-
+  flex: 1 0 0;
+  padding: 4px;
+  border-right: 1px solid #4A4A4A;
 }

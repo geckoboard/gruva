@@ -2,7 +2,7 @@ import { cloneDeep, uniqBy } from 'lodash';
 import * as actions from '../actions';
 
 const initialState = {
-  loading: true,
+  loadingMilestoneIds: [],
   byMilestoneId: {},
 };
 
@@ -13,12 +13,16 @@ const epicsReducer = (state = initialState, action) => {
     case actions.fetchEpics.start.type:
       return {
         ...state,
-        loading: true,
+        loadingMilestoneIds: [...state.loadingMilestoneIds, payload],
       };
     case actions.fetchEpics.end.type:
+      const loadingIds = [...state.loadingMilestoneIds];
+      var index = loadingIds.indexOf(payload);
+      if (index !== -1) loadingIds.splice(index, 1);
+
       return {
         ...state,
-        loading: false,
+        loadingMilestoneIds: loadingIds,
       };
     case actions.epicsReceived.type:
       const { milestoneId, epics } = payload;
