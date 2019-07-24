@@ -18,8 +18,11 @@ const forMilestone = (req, res, next) => {
   };
 
   return request(options)
-    .then((epics = []) => {
-      res.status(200).send(epics.data.map(whitelistEpic));
+    .then(epics => {
+      res.status(200).send({
+        ...epics,
+        data: epics.data.map(whitelistEpic),
+      });
     })
     .catch(next);
 };
