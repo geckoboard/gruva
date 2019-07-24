@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './epics.css';
+import Epic from '../epic';
 
 class Epics extends Component {
   componentDidMount() {
-    this.fetchEpics();
+    this.fetchData();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.milestoneId !== nextProps.milestoneId) {
-      this.fetchEpics(nextProps.milestoneId);
+      this.fetchData(nextProps.milestoneId);
     }
   }
 
-  fetchEpics(milestoneId) {
-    this.props.fetchEpics(milestoneId || this.props.milestoneId);
+  fetchData(milestoneId) {
+    this.props.fetchData(milestoneId || this.props.milestoneId);
   }
 
   render() {
-    const { epics } = this.props;
+    const { epics, milestoneId } = this.props;
 
     if (!epics) {
       return <div>Loading epics...</div>;
@@ -32,7 +33,7 @@ class Epics extends Component {
       <div className={styles.epics}>
         <h3>Epics</h3>
         {epics.map(epic => (
-          <h4 key={epic.id}>{epic.name}</h4>
+          <Epic key={epic.id} epic={epic} milestoneId={milestoneId} />
         ))}
       </div>
     );
@@ -44,7 +45,7 @@ Epics.propTypes = {
     PropTypes.shape({ id: PropTypes.string, name: PropTypes.string }),
   ),
   milestoneId: PropTypes.string,
-  fetchEpics: PropTypes.func,
+  fetchData: PropTypes.func,
 };
 
 export default Epics;

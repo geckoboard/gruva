@@ -2,6 +2,7 @@ import { createAction, createThunk } from 'redan';
 import api from '../api';
 
 export const epicsReceived = createAction('EPICS_RECEIVED');
+export const storiesReceived = createAction('STORIES_RECEIVED');
 
 export const fetchMilestones = createThunk('FETCH_MILESTONES', () => () => {
   return api.milestones.get();
@@ -16,6 +17,18 @@ export const fetchEpics = createThunk(
     );
 
     return request;
+  },
+);
+
+export const fetchStories = createThunk(
+  'FETCH_STORIES',
+  milestoneId => dispatch => {
+    const request = _keepFetching(
+      next => api.stories.getForMilestone(milestoneId, next),
+      res => dispatch(storiesReceived({ milestoneId, stories: res.data })),
+    );
+
+    return request.then(() => milestoneId);
   },
 );
 

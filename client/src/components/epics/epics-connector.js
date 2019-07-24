@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchEpics } from '../../redux/actions';
+import { fetchEpics, fetchStories } from '../../redux/actions';
 import Epics from './epics';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,8 +15,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchEpics: milestoneId => {
+    fetchData: milestoneId => {
       dispatch(fetchEpics(milestoneId));
+      dispatch(fetchStories(milestoneId));
     },
   };
 };
