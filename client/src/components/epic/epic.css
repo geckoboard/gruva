@@ -11,3 +11,12 @@
   box-shadow: 0 -1px 1px rgba(0,0,0,.4) inset;
 }
 
+.done {
+  background: rgba(217, 250, 217, 0.6) !important;
+  /*background: #f1fef5 !important;*/ /* colour from clubhouse */
+}
+
+.done:first-of-type {
+  margin-left: 10px;
+}
+
