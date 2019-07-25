@@ -5,13 +5,29 @@
 
   background-color: #E8E9F3;
   background-color: #B1E5F2;
-  padding: 8px 10px;
+  padding: 8px 5px 8px 8px;
   margin: 0 0 10px 0;
 
   box-shadow: 0 -1px 1px rgba(0,0,0,.2) inset;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.name {
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+  marign-right: 3px;
 }
 
 .done {
   opacity: 0.5;
+}
+
+.icon {
+  opacity: 0.6;
+  display: flex;
+  align-items: flex-end;
 }

@@ -8,7 +8,7 @@ const EpicHeader = props => {
   } = props;
   return (
     <div className={styles.epicHeader}>
-      <h4 className={styles.name}>{name}</h4>
+      <h2 className={styles.name}>{name}</h2>
     </div>
   );
 };

@@ -25,6 +25,8 @@ const whitelistStory = story => ({
   started: story.started,
   updated_at: story.updated_at,
   position: story.position,
+  blocker: story.blocker,
+  blocked: story.blocked,
 });
 
 module.exports = {
