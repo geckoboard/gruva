@@ -15,7 +15,7 @@ const sortStories = stories => {
 
 class Stories extends Component {
   render() {
-    const { isLoading, stories } = this.props;
+    const { isEpicDone, isLoading, stories } = this.props;
 
     if (!isLoading && !stories.length) {
       return <div>No stories for this epic</div>;
@@ -26,7 +26,7 @@ class Stories extends Component {
     return (
       <div className={styles.stories}>
         {sortedStories.map(story => (
-          <Story key={story.id} story={story} />
+          <Story key={story.id} story={story} isEpicDone={isEpicDone} />
         ))}
       </div>
     );
@@ -38,6 +38,7 @@ Stories.defaultProps = {
 };
 
 Stories.propTypes = {
+  isEpicDone: PropTypes.bool,
   isLoading: PropTypes.bool,
   stories: PropTypes.array,
 };

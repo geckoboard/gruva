@@ -19,7 +19,7 @@ const Epic = props => {
   return (
     <div className={classes}>
       <EpicHeader epic={epic} />
-      <Stories epicId={id} milestoneId={milestoneId} />
+      <Stories epicId={id} milestoneId={milestoneId} isEpicDone={completed} />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const initialState = {
   loadingMilestoneIds: [],
   byEpicId: getCachedStories(),
   epicless: [],
-  doneVisible: true,
+  doneVisible: false,
 };
 
 const storiesReducer = (state = initialState, action) => {
