@@ -5,20 +5,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-solid-svg-icons';
 import styles from './story.css';
 
+const getStoryTypeIcon = story => {
+  switch (story.story_type) {
+    case 'bug':
+      return icons.faBug;
+    case 'chore':
+      return icons.faWrench;
+    default:
+      return icons.faCertificate;
+  }
+};
+
 const getIcons = story => {
   const storyIcons = [];
 
-  // Feature, bug, chore
-  switch (story.story_type) {
-    case 'bug':
-      storyIcons.push(icons.faBug);
-      break;
-    case 'chore':
-      storyIcons.push(icons.faWrench);
-      break;
-    default:
-      storyIcons.push(icons.faCertificate);
-      break;
+  if (!story.completed && story.blocked) {
+    storyIcons.push(icons.faMinusCircle);
   }
 
   // Completed or doing
@@ -28,10 +30,6 @@ const getIcons = story => {
     storyIcons.push(icons.faPaperPlane);
   }
 
-  if (!story.completed && story.blocked) {
-    storyIcons.push(icons.faMinusCircle);
-  }
-
   return storyIcons;
 };
 
@@ -39,7 +37,7 @@ const Story = props => {
   const {
     doneVisible,
     story,
-    story: { completed, name, story_type: storyType },
+    story: { id, app_url: storyHref, completed, name, story_type: storyType },
   } = props;
 
   const classes = classnames(styles.story, styles.clubhouseStyle, {
@@ -50,23 +48,36 @@ const Story = props => {
   });
 
   const storyIcons = getIcons(story);
+  const storyTypeIcon = getStoryTypeIcon(story);
+  const typeIconClasses = classnames(
+    styles.typeIcon,
+    styles[`icon-${storyTypeIcon.iconName}`],
+  );
 
   return (
     <div className={classes}>
       <h3 className={styles.name}>{name}</h3>
-      <div className={styles.icons}>
-        {storyIcons.map(icon => {
-          const iconClasses = classnames(
-            styles.icon,
-            styles[`icon-${icon.iconName}`],
-          );
-          return (
-            <div key={icon.iconName} className={iconClasses}>
-              <FontAwesomeIcon icon={icon} />
-            </div>
-          );
-        })}
-      </div>
+      <footer className={styles.footer}>
+        <a href={storyHref} target="_blank" className={styles.storyLink}>
+          <span className={typeIconClasses}>
+            <FontAwesomeIcon icon={storyTypeIcon} />
+          </span>
+          {id}
+        </a>
+        <div className={styles.icons}>
+          {storyIcons.map(icon => {
+            const iconClasses = classnames(
+              styles.icon,
+              styles[`icon-${icon.iconName}`],
+            );
+            return (
+              <div key={icon.iconName} className={iconClasses}>
+                <FontAwesomeIcon icon={icon} />
+              </div>
+            );
+          })}
+        </div>
+      </footer>
     </div>
   );
 };

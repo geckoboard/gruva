@@ -19,6 +19,11 @@
   flex-direction: column;
 }
 
+.story footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .name {
   font-size: 0.9rem;
   margin: 0;
@@ -29,6 +34,24 @@
 
 .icons {
   display: flex;
+}
+
+.storyLink {
+  display: inline-block;
+  background: rgba(0,0,0,.05);
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+
+  transition: background-color .1s;
+}
+.storyLink:hover {
+  color: #272635;
+  background: rgba(0,0,0,.2);
+}
+.typeIcon {
+  display: inline-block;
+  margin: 0 3px 0 0;
 }
 
 .icon {
