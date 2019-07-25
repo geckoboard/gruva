@@ -1,7 +1,7 @@
 .epics {
   display: flex;
   width: 100%;
-  min-height: calc(100% - 48px);
+  min-height: calc(100% - 54px);
   overflow: scroll;
   margin: 10px 0 0 0;
 }

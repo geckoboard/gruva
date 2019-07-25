@@ -15,7 +15,9 @@ const MilestonePage = props => {
 
   return (
     <div className={styles.page}>
-      <MilestonePicker selectedMilestoneId={milestoneId} />
+      <header>
+        <MilestonePicker selectedMilestoneId={milestoneId} />
+      </header>
       <Epics milestoneId={milestoneId} />
       {isLoading && <Loader />}
     </div>
