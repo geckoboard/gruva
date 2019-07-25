@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
+import { toggleDoneStoriesVisibility } from '../../redux/actions';
 import MilestonePage from './milestone-page';
 
 const mapStateToProps = (state, ownProps) => {
   const {
     milestones: { isLoading: isLoadingMilestones },
     epics: { loadingMilestoneIds: loadingEpics },
-    stories: { loadingMilestoneIds: loadingStories },
+    stories: { loadingMilestoneIds: loadingStories, doneVisible },
   } = state;
   const {
     match: {
@@ -20,9 +21,21 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     isLoading,
+    doneStoriesVisible: doneVisible,
   };
 };
 
-const MilestonePageConnector = connect(mapStateToProps)(MilestonePage);
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleDoneStoriesVisibility: () => {
+      dispatch(toggleDoneStoriesVisibility());
+    },
+  };
+};
+
+const MilestonePageConnector = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MilestonePage);
 
 export default MilestonePageConnector;

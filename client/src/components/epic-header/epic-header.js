@@ -7,6 +7,7 @@ import styles from './epic-header.css';
 const EpicHeader = props => {
   const {
     epic: {
+      completed,
       name,
       stats: {
         num_stories_unstarted: numStoriesUnstarted,
@@ -20,7 +21,14 @@ const EpicHeader = props => {
 
   return (
     <div className={styles.epicHeader}>
-      <h2 className={styles.name}>{name}</h2>
+      <h2 className={styles.name}>
+        {name}{' '}
+        {completed && (
+          <span className={styles.icon}>
+            <FontAwesomeIcon icon={icons.faCheck} />
+          </span>
+        )}
+      </h2>
       <div className={styles.epicStats}>
         <div className={styles.done}>
           <span className={styles.icon}>
@@ -31,7 +39,7 @@ const EpicHeader = props => {
         {!!numStoriesStarted && (
           <div className={styles.doing}>
             <span className={styles.icon}>
-              <FontAwesomeIcon icon={icons.faTruck} />
+              <FontAwesomeIcon icon={icons.faPaperPlane} />
             </span>
             {numStoriesStarted}
           </div>

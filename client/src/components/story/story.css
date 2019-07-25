@@ -1,33 +1,86 @@
 .story {
   font-size: 0.9rem;
   line-height: 1.3rem;
-  min-width: 200px;
+  /*min-width: 200px;*/
 
-  background-color: #E8E9F3;
+  /*background-color: #E8E9F3;*/
   background-color: #B1E5F2;
+  transition: opacity 0.1s;
+
   padding: 8px 5px 8px 8px;
   margin: 0 0 10px 0;
 
   box-shadow: 0 -1px 1px rgba(0,0,0,.2) inset;
 
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  /*justify-content: space-between;*/
+  /*align-items: flex-end;*/
+
+  flex-direction: column;
 }
 
 .name {
   font-size: 0.9rem;
   margin: 0;
   padding: 0;
-  margin-right: 3px;
+  margin-bottom: 3px;
+  flex-grow: 1;
 }
 
-.done {
-  opacity: 0.5;
+.icons {
+  display: flex;
 }
 
 .icon {
   opacity: 0.6;
   display: flex;
+  margin: 0 5px 0 0;
   align-items: flex-end;
+}
+
+.icon-bug {
+  color: #a00808;
+}
+
+.icon-wrench{
+  color: grey;
+}
+
+.icon-certificate {
+  color: #c9a61d;
+}
+
+.icon-check {
+  color: #13ae47;
+}
+
+.done {
+  /*opacity: 0.8;*/
+}
+
+.hideDone {
+  opacity: 0.2;
+}
+
+.bug {
+  /*background-color: #fce8e8;*/
+}
+
+.chore {
+  /*background: #f1f6fe;*/
+}
+
+/** Clubhouse story colours */
+
+.clubhouseStyle.story {
+  background-color: #f7f4e8; /* clubhouse colour */
+  border-radius: 3px;
+}
+
+.clubhouseStyle.bug {
+  background-color: #fce8e8;
+}
+
+.clubhouseStyle.chore {
+  background: #f1f6fe;
 }

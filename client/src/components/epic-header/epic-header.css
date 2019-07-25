@@ -11,6 +11,10 @@
   min-height: 72px; /*3 lines*/
 }
 
+.name .icon {
+  color: #13ae47;
+}
+
 .epicStats {
   margin: 7px 0;
   padding: 5px;

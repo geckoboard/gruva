@@ -2,10 +2,44 @@
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 10px 5px 0 5px;
+  padding: 0 5px 0 5px;
+  /*background: #f3f3f3;*/
 }
 
 .page header {
-  height: 44px;
+  box-sizing: border-box;
+  height: 54px;
+  width: 100%;
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
   border-bottom: 1px solid rgba(39, 38, 53, 0.4);
+  display: flex;
+  /*justify-content: space-between;*/
+  padding: 5px 20px 0 0;
+}
+
+.titleAndLoader {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.page section {
+  margin-top: 64px;
+}
+
+.toggleDoneButton {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  ouline: 0;
+  cursor: pointer;
+}
+
+.toggleDoneButton:hover {
+  color: #B1E5F2;
 }

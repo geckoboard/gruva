@@ -1,6 +1,8 @@
 import { createAction, createThunk } from 'redan';
 import api from '../api';
 
+export const toggleDoneStoriesVisibility = createAction('DONE_STORES_VISIBLE');
+
 export const epicsReceived = createAction('EPICS_RECEIVED');
 export const storiesReceived = createAction('STORIES_RECEIVED');
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as icons from '@fortawesome/free-solid-svg-icons';
 import MilestonePicker from '../milestone-picker';
 import Epics from '../epics';
 import Loader from '../loader/loader';
@@ -11,15 +13,31 @@ const MilestonePage = props => {
     match: {
       params: { milestoneId },
     },
+    doneStoriesVisible,
+    toggleDoneStoriesVisibility,
   } = props;
+
+  const toggleButtonText = doneStoriesVisible
+    ? 'Hide completed'
+    : 'Show completed';
 
   return (
     <div className={styles.page}>
       <header>
-        <MilestonePicker selectedMilestoneId={milestoneId} />
+        <div className={styles.titleAndLoader}>
+          <MilestonePicker selectedMilestoneId={milestoneId} />
+          {isLoading && <Loader />}
+        </div>
+        <button
+          onClick={toggleDoneStoriesVisibility}
+          className={styles.toggleDoneButton}
+        >
+          {toggleButtonText} <FontAwesomeIcon icon={icons.faFileAlt} />{' '}
+        </button>
       </header>
-      <Epics milestoneId={milestoneId} />
-      {isLoading && <Loader />}
+      <section>
+        <Epics milestoneId={milestoneId} />
+      </section>
     </div>
   );
 };
@@ -27,6 +45,8 @@ const MilestonePage = props => {
 MilestonePage.propTypes = {
   isLoading: PropTypes.bool,
   match: PropTypes.object,
+  doneStoriesVisible: PropTypes.bool,
+  toggleDoneStoriesVisibility: PropTypes.func,
 };
 
 export default MilestonePage;
