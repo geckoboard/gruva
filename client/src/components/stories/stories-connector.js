@@ -13,8 +13,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const StoriesConnector = connect(
-  mapStateToProps,
-)(Stories);
+const StoriesConnector = connect(mapStateToProps)(Stories);
 
 export default StoriesConnector;

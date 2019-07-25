@@ -1,13 +1,17 @@
 .story {
-  font-size: 0.8rem;
-  line-height: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
   min-width: 200px;
 
-  /* Styles from clubouse */
-  background: #f7f4e8;
-  box-shadow: 0 -1px 1px rgba(0,0,0,.08) inset;
-  border-radius: 3px;
-  color: #333;
-  margin: 0 0 5px;
-  padding: 11px 11px 9px;
+  background-color: #E8E9F3;
+  background-color: #B1E5F2;
+  padding: 8px 10px;
+  margin: 0 0 10px 0;
+
+  box-shadow: 0 -1px 1px rgba(0,0,0,.2) inset;
+
+}
+
+.done {
+  opacity: 0.5;
 }

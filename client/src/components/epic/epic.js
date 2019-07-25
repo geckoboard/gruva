@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Stories from '../stories';
+import EpicHeader from '../epic-header/epic-header';
 import styles from './epic.css';
 
 const Epic = props => {
   const {
-    epic: { id, name },
+    epic,
+    epic: { id },
     milestoneId,
   } = props;
 
+  const classes = classnames(styles.epic);
+
   return (
-    <div className={styles.epic}>
-      <h4 key={id}>{name}</h4>
+    <div className={classes}>
+      <EpicHeader epic={epic} />
       <Stories epicId={id} milestoneId={milestoneId} />
     </div>
   );
