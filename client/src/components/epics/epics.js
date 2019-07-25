@@ -5,7 +5,10 @@ import Epic from '../epic';
 import styles from './epics.css';
 
 const sortEpics = epics => {
-  return sortBy(epics.filter(epic => !epic.archived), 'position');
+  return sortBy(epics.filter(epic => !epic.archived), [
+    'completed',
+    'position',
+  ]);
 };
 
 class Epics extends Component {
@@ -34,12 +37,8 @@ class Epics extends Component {
 
     return (
       <div className={styles.epics}>
-        {sortedEpics.map((epic) => (
-          <Epic
-            key={epic.id}
-            epic={epic}
-            milestoneId={milestoneId}
-          />
+        {sortedEpics.map(epic => (
+          <Epic key={epic.id} epic={epic} milestoneId={milestoneId} />
         ))}
       </div>
     );

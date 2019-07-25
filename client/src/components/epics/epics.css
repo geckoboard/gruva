@@ -1,6 +1,7 @@
 .epics {
   display: flex;
-  max-width: 100%;
-  overflow-x: scroll;
-  margin: 15px 0 0 0;
+  width: 100%;
+  min-height: calc(100% - 48px);
+  overflow: scroll;
+  margin: 10px 0 0 0;
 }

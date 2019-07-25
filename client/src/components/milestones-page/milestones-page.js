@@ -11,7 +11,7 @@ class MilestonesPage extends Component {
 
   renderPage() {
     return (
-      <div>
+      <div className={styles.page}>
         <h1>Milestones</h1>
         <MilestoneList />
       </div>
@@ -21,7 +21,7 @@ class MilestonesPage extends Component {
   render() {
     const { match } = this.props;
     return (
-      <div className={styles.page}>
+      <div>
         <Route exact path={match.path} render={this.renderPage} />
       </div>
     );
