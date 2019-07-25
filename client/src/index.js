@@ -13,14 +13,12 @@ const store = createStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className={styles.container}>
-      <Router>
-        <div>
-          <Route path="/milestones" component={MilestonesPage} />
-          <Route path="/milestones/:milestoneId" component={MilestonePage} />
-        </div>
-      </Router>
-    </div>
+    <Router>
+      <div className={styles.container}>
+        <Route path="/milestones" component={MilestonesPage} />
+        <Route path="/milestones/:milestoneId" component={MilestonePage} />
+      </div>
+    </Router>
   </Provider>,
   document.getElementById('App'),
 );

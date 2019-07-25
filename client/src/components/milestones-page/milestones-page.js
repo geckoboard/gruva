@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import MilestoneList from '../milestone-list';
+import styles from './milestones-page.css';
 
 class MilestonesPage extends Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class MilestonesPage extends Component {
 
   renderPage() {
     return (
-      <div>
+      <div className={styles.page}>
         <h1>Milestones</h1>
         <MilestoneList />
       </div>

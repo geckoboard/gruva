@@ -1,11 +1,28 @@
-body {
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  color: #4A4A4A;
-  width: 100%;
+html, body {
   height: 100%;
+}
+
+body {
+  font-family: "Changa", Helvetica, Arial, sans-serif;
+  color: #272635;
+  width: 100%;
   line-height: 1.4rem;
 }
 
 div {
   box-sizing: border-box;
+}
+
+a {
+  color: #272635;
+  text-decoration: none;
+  transition: 50ms color;
+}
+
+a:hover {
+  color: #B1E5F2;
+    /*color: #E8E9F3;*/
+    /*color: #CECECE;*/
+    /*color: #A6A6A8;*/
+    /*color: #272635;*/
 }

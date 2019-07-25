@@ -1,0 +1,24 @@
+.epicHeader {
+  min-height: 145px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  margin: 0;
+  min-height: 75px; /*3 lines*/
+}
+
+.epicStats {
+  margin: 7px 0;
+  padding: 5px;
+  border-bottom: 1px solid rgba(39, 38, 53, 0.4);
+  border-top: 1px solid rgba(39, 38, 53, 0.4);
+  flex-grow: 1;
+}
+
+.epicStats .icon {
+  margin: 0 5px 0 0;
+}
