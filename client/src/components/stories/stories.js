@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { sortBy } from 'lodash';
+import { orderBy } from 'lodash';
 import Story from '../story';
 import styles from './stories.css';
 
 const sortStories = stories => {
-  return sortBy(stories.filter(story => !story.archived), 'position');
+  // Show started first, completed last. Then ordered by position.
+  return orderBy(
+    stories.filter(story => !story.archived),
+    ['completed', 'started', 'position'],
+    ['asc', 'desc', 'asc'],
+  );
 };
 
 class Stories extends Component {
