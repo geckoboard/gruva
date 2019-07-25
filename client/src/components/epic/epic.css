@@ -1,22 +1,33 @@
 .epic {
   padding: 8px 8px 10px 8px;
   /*border-radius: 3px;*/
-  flex: 1 0 200px;
+  /*flex: 1 0 200px;*/
+  margin: 0 3px;
+
+  /*background-color: #efefef;*/
+  /*background-color: #f7f7f7;*/
+/*background: rgba(0, 0, 0, .02);*/
+
+
+  box-shadow: 0 -1px 1px rgba(0,0,0, .4) inset;
+
+  /*background: white;*/
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 2px 4px rgba(0,0,0,.2)*/
+
+  flex-grow: 1;
+  flex-shrink: 0;
+  width: 220px
 }
 
 .epic:nth-child(even) {
-  background-color: #efefef;
-  background-color: #E8E9F3;
+  /*!*background-color: #efefef;*!*/
+  /*background-color: #E8E9F3;*/
 
-  box-shadow: 0 -1px 1px rgba(0,0,0,.4) inset;
+  /*box-shadow: 0 -1px 1px rgba(0,0,0,.4) inset;*/
 }
 
 .done {
-  background: rgba(217, 250, 217, 0.6) !important;
+  background: rgba(217, 250, 217, 0.6);
   /*background: #f1fef5 !important;*/ /* colour from clubhouse */
 }
-
-.done:first-of-type {
-  margin-left: 10px;
-}
-

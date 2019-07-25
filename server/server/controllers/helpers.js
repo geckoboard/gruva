@@ -27,6 +27,8 @@ const whitelistStory = story => ({
   position: story.position,
   blocker: story.blocker,
   blocked: story.blocked,
+  story_type: story.story_type,
+  app_url: story.app_url,
 });
 
 module.exports = {

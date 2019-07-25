@@ -14,12 +14,18 @@ const initialState = {
   loadingMilestoneIds: [],
   byEpicId: getCachedStories(),
   epicless: [],
+  doneVisible: false,
 };
 
 const storiesReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case actions.toggleDoneStoriesVisibility.type:
+      return {
+        ...state,
+        doneVisible: !state.doneVisible,
+      };
     case actions.fetchStories.start.type:
       return {
         ...state,
