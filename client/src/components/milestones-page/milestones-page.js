@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import MilestoneList from '../milestone-list';
+import styles from './milestones-page.css';
 
 class MilestonesPage extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class MilestonesPage extends Component {
   render() {
     const { match } = this.props;
     return (
-      <div>
+      <div className={styles.page}>
         <Route exact path={match.path} render={this.renderPage} />
       </div>
     );

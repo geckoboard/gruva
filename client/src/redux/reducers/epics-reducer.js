@@ -1,9 +1,18 @@
 import { cloneDeep, uniqBy } from 'lodash';
 import * as actions from '../actions';
 
+const getCachedEpics = () => {
+  const storedJSON = localStorage.getItem(`epics`);
+  if (storedJSON) {
+    return JSON.parse(storedJSON);
+  }
+
+  return {};
+};
+
 const initialState = {
   loadingMilestoneIds: [],
-  byMilestoneId: {},
+  byMilestoneId: getCachedEpics(),
 };
 
 const epicsReducer = (state = initialState, action) => {
@@ -19,6 +28,8 @@ const epicsReducer = (state = initialState, action) => {
       const loadingIds = [...state.loadingMilestoneIds];
       var index = loadingIds.indexOf(payload);
       if (index !== -1) loadingIds.splice(index, 1);
+
+      localStorage.setItem(`epics`, JSON.stringify(state.byMilestoneId));
 
       return {
         ...state,

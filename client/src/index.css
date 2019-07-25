@@ -13,7 +13,7 @@ div {
 a {
   color: #272635;
   text-decoration: none;
-
+  transition: 50ms color;
 }
 
 a:hover {
