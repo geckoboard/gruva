@@ -15,4 +15,6 @@ module.exports = app => {
     '/api/milestones/:milestone_id/stories',
     storiesController.forMilestone,
   );
+
+  app.put('/api/stories/:story_id/update', storiesController.update);
 };

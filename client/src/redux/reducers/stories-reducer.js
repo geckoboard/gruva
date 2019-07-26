@@ -1,4 +1,4 @@
-import { cloneDeep, forEach, sortBy, uniqBy } from 'lodash';
+import { cloneDeep, forEach, remove, sortBy, uniqBy } from 'lodash';
 import * as actions from '../actions';
 
 const getCachedStories = () => {
@@ -21,6 +21,28 @@ const storiesReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case actions.setStoryEpicId.type:
+      const { storyId, previousEpicId, newEpicId } = payload;
+      const currentEpic = [...state.byEpicId[previousEpicId]];
+
+      const [storyToMove] = remove(currentEpic, story => story.id === storyId);
+
+      const newbyEpicsId = {
+        ...state.byEpicId,
+        [previousEpicId]: currentEpic,
+        [newEpicId]: [
+          ...state.byEpicId[newEpicId],
+          { ...storyToMove, epic_id: parseInt(newEpicId, 10) },
+        ],
+      };
+
+      localStorage.setItem(`stories`, JSON.stringify(newbyEpicsId));
+
+      return {
+        ...state,
+        byEpicId: newbyEpicsId,
+      };
+
     case actions.toggleDoneStoriesVisibility.type:
       return {
         ...state,

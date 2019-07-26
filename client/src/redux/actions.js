@@ -3,6 +3,7 @@ import api from '../api';
 
 export const toggleDoneStoriesVisibility = createAction('DONE_STORES_VISIBLE');
 export const setNumberOfStories = createAction('SET_NO_STORIES');
+export const setStoryEpicId = createAction('SET_STORY_EPIC_ID');
 
 export const epicsReceived = createAction('EPICS_RECEIVED');
 export const storiesReceived = createAction('STORIES_RECEIVED');
@@ -30,11 +31,23 @@ export const fetchStories = createThunk(
       next => api.stories.getForMilestone(milestoneId, next),
       res => {
         dispatch(storiesReceived({ milestoneId, stories: res.data }));
-        dispatch(setNumberOfStories({ milestoneId, count: res.total }));
+        // dispatch(setNumberOfStories({ milestoneId, count: res.total }));
       },
     );
 
     return request.then(() => milestoneId);
+  },
+);
+
+export const updateStoryEpicId = createThunk(
+  'UPDATE_EPIC_ID',
+  payload => dispatch => {
+    const { storyId, newEpicId } = payload;
+    dispatch(setStoryEpicId(payload));
+
+    // TODO: Revert back if update errors
+
+    api.stories.update(storyId, { epic_id: newEpicId });
   },
 );
 

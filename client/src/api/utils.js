@@ -19,6 +19,7 @@ export const apiRequest = (url, options = {}) => {
   const sharedOptions = {
     credentials: 'same-origin',
     headers: {
+      ...options.headers,
       'X-Socket-Session': getSessionID(),
     },
   };

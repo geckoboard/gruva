@@ -28,4 +28,20 @@ const forMilestone = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = { forMilestone };
+const update = (req, res, next) => {
+  const options = {
+    method: 'PUT',
+    uri: `${API_URL}/stories/${req.params.story_id}`,
+    qs: { token: API_KEY },
+    body: req.body,
+    json: true,
+  };
+
+  return request(options)
+    .then(story => {
+      res.status(200).send(whitelistStory(story));
+    })
+    .catch(next);
+};
+
+module.exports = { forMilestone, update };
