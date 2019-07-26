@@ -17,6 +17,16 @@
   /*align-items: flex-end;*/
 
   flex-direction: column;
+
+}
+
+.canDrag {
+  cursor: grab;
+}
+
+.isDragging {
+  opacity: 0.3;
+  cursor: grabbing;
 }
 
 .story footer {

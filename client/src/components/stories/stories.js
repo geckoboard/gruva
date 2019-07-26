@@ -26,7 +26,12 @@ class Stories extends Component {
     return (
       <div className={styles.stories}>
         {sortedStories.map(story => (
-          <Story key={story.id} story={story} isEpicDone={isEpicDone} />
+          <Story
+            key={story.id}
+            story={story}
+            isEpicDone={isEpicDone}
+            isLoadingStories={isLoading}
+          />
         ))}
       </div>
     );

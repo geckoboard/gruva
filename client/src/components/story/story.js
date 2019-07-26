@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { useDrag } from 'react-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-solid-svg-icons';
 import styles from './story.css';
@@ -36,15 +37,36 @@ const getIcons = story => {
 const Story = props => {
   const {
     doneVisible,
+    isLoadingStories,
+    setEpicId,
     story,
     story: { id, app_url: storyHref, completed, name, story_type: storyType },
   } = props;
+
+  const [{ canDrag, isDragging }, dragRef] = useDrag({
+    item: { type: 'STORY', id },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+      canDrag: !!monitor.canDrag(),
+    }),
+    canDrag: () => !isLoadingStories,
+    end: (item, monitor) => {
+      if (monitor.didDrop()) {
+        const { epicId } = monitor.getDropResult();
+        if (epicId !== story.epic_id.toString()) {
+          setEpicId(epicId);
+        }
+      }
+    },
+  });
 
   const classes = classnames(styles.story, styles.clubhouseStyle, {
     [styles.done]: completed,
     [styles.hideDone]: completed && !doneVisible,
     [styles.bug]: storyType === 'bug',
     [styles.chore]: storyType === 'chore',
+    [styles.isDragging]: isDragging,
+    [styles.canDrag]: canDrag,
   });
 
   const storyIcons = getIcons(story);
@@ -55,7 +77,7 @@ const Story = props => {
   );
 
   return (
-    <div className={classes}>
+    <div ref={dragRef} className={classes}>
       <h3 className={styles.name}>{name}</h3>
       <footer className={styles.footer}>
         <a href={storyHref} target="_blank" className={styles.storyLink}>
@@ -84,7 +106,9 @@ const Story = props => {
 
 Story.propTypes = {
   doneVisible: PropTypes.bool,
+  isLoadingStories: PropTypes.bool,
   story: PropTypes.object,
+  setEpicId: PropTypes.func,
 };
 
 export default Story;

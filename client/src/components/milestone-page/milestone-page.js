@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as icons from '@fortawesome/free-solid-svg-icons';
+import { DndProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import MilestonePicker from '../milestone-picker';
 import Epics from '../epics';
 import Loader from '../loader/loader';
@@ -19,7 +19,7 @@ class MilestonePage extends Component {
     document.addEventListener('keyup', this.handleKeypress);
   }
 
-  domponentWillUnmount() {
+  componentWillUnmount() {
     document.removeEventListener('keyup', this.handleKeypress);
   }
 
@@ -38,18 +38,20 @@ class MilestonePage extends Component {
     } = this.props;
 
     return (
-      <div className={styles.page}>
-        <header>
-          <div className={styles.titleAndLoader}>
-            <MilestonePicker selectedMilestoneId={milestoneId} />
-            {isLoading && <Loader />}
-          </div>
-          <MilestoneStats id={milestoneId} />
-        </header>
-        <section>
-          <Epics milestoneId={milestoneId} />
-        </section>
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div className={styles.page}>
+          <header>
+            <div className={styles.titleAndLoader}>
+              <MilestonePicker selectedMilestoneId={milestoneId} />
+              {isLoading && <Loader />}
+            </div>
+            <MilestoneStats id={milestoneId} />
+          </header>
+          <section>
+            <Epics milestoneId={milestoneId} />
+          </section>
+        </div>
+      </DndProvider>
     );
   }
 }

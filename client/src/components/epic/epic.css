@@ -42,3 +42,11 @@
   background: rgba(217, 250, 217, 0.6);
   /*background: #f1fef5;  !*colour from clubhouse*!*/
 }
+
+.stories {
+  height: 100%;
+}
+
+.isOver {
+  background: rgba(0, 0, 0, .1);
+}
