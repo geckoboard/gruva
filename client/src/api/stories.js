@@ -1,4 +1,4 @@
-import { API, apiRequest, getClubhouseSearch } from './utils';
+import { API, apiRequest, getClubhouseSearch, getJSON } from './utils';
 
 export const getForMilestone = (milestoneId, next) => {
   const url = `${API}/milestones/${milestoneId}/stories`;
@@ -15,5 +15,5 @@ export const update = (storyId, body = '') => {
     body: JSON.stringify(body),
   };
 
-  return apiRequest(url, options);
+  return apiRequest(url, options).then(getJSON);
 };

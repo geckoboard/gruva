@@ -19,6 +19,24 @@ const epicsReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case actions.fetchEpic.end.type:
+      const amendMilestoneId = payload.milestone_id.toString();
+      let amendedEpics = [...state.byMilestoneId[amendMilestoneId]];
+
+      // Add epics to front of array to keep newest data at the front
+      // because uniqBy will keep the first items with uniq keys.
+      amendedEpics.unshift({ ...payload, id: payload.id.toString() });
+      amendedEpics = uniqBy(amendedEpics, 'id');
+
+      localStorage.setItem(`epics`, JSON.stringify(state.byMilestoneId));
+
+      return {
+        ...state,
+        byMilestoneId: {
+          ...state.byMilestoneId,
+          [amendMilestoneId]: amendedEpics,
+        },
+      };
     case actions.fetchEpics.start.type:
       return {
         ...state,
