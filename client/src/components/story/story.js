@@ -44,7 +44,7 @@ const Story = props => {
   } = props;
 
   const [{ canDrag, isDragging }, dragRef] = useDrag({
-    item: { type: 'STORY', id },
+    item: { type: 'STORY', id, epicId: story.epic_id.toString()},
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
       canDrag: !!monitor.canDrag(),

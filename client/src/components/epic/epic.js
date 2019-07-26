@@ -13,12 +13,16 @@ const Epic = props => {
     milestoneId,
   } = props;
 
-  const [{ isOver }, dropRef] = useDrop({
+  const [{ canDrop, isOver }, dropRef] = useDrop({
     accept: 'STORY',
     drop: () => {
       return { epicId: id };
     },
+    canDrop: item => {
+      return item.epicId !== id;
+    },
     collect: mon => ({
+      canDrop: !!mon.canDrop(),
       isOver: !!mon.isOver(),
     }),
   });
@@ -30,7 +34,7 @@ const Epic = props => {
   });
 
   const storiesClasses = classnames(styles.stories, {
-    [styles.isOver]: isOver,
+    [styles.isOver]: isOver && canDrop,
   });
 
   return (

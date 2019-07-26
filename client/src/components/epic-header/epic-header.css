@@ -15,7 +15,8 @@
 .titleIcon {
   font-size: 0.9rem;
   opacity: 0.8;
-
+  display: inline-block;
+  margin-right: 3px;
   /*position: absolute;*/
   /*top: 0;*/
   /*right: 0;*/

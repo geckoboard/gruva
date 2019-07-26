@@ -51,9 +51,9 @@ const EpicHeader = props => {
       <div className={styles.epicStats}>
         <div className={styles.done}>
           <span className={styles.icon}>
-            <FontAwesomeIcon icon={solidIcons.faCheck} />
+            <FontAwesomeIcon icon={icons.faFileAlt} />
           </span>
-          {numStoriesDone} / {numStories} stories
+          {numStoriesDone} / {numStories} stories done
         </div>
         {!!numStoriesStarted && (
           <div className={styles.doing}>
