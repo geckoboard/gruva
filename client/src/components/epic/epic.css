@@ -11,13 +11,16 @@
 
   box-shadow: 0 -1px 1px rgba(0,0,0, .4) inset;
 
+  border-right: 1px solid rgba(39, 38, 53, 0.1);
+
   /*background: white;*/
   /*border-radius: 5px;*/
   /*box-shadow: 0 2px 4px rgba(0,0,0,.2)*/
 
   flex-grow: 1;
   flex-shrink: 0;
-  width: 220px
+  width: 220px;
+  max-width: 420px;
 }
 
 .epic:nth-child(even) {
@@ -27,7 +30,15 @@
   /*box-shadow: 0 -1px 1px rgba(0,0,0,.4) inset;*/
 }
 
+.todo {
+  background: #f0f1f5;
+}
+
+.doing {
+  background: #fff;
+}
+
 .done {
   background: rgba(217, 250, 217, 0.6);
-  /*background: #f1fef5 !important;*/ /* colour from clubhouse */
+  /*background: #f1fef5;  !*colour from clubhouse*!*/
 }

@@ -1,0 +1,14 @@
+.container {
+  flex-grow: 0;
+
+  display: flex;
+}
+
+.stat {
+  margin: 0 5px 0 0;
+}
+
+.icon {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}

@@ -3,12 +3,21 @@ import * as actions from '../actions';
 const initialState = {
   loading: true,
   entities: [],
+  numberOfStories: {},
 };
 
 const milestonesReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case actions.setNumberOfStories.type:
+      return {
+        ...state,
+        numberOfStories: {
+          ...state.numberOfStories,
+          [payload.milestoneId]: payload.count,
+        },
+      };
     case actions.fetchMilestones.start.type:
       return {
         ...state,

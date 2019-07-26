@@ -2,6 +2,7 @@ import { createAction, createThunk } from 'redan';
 import api from '../api';
 
 export const toggleDoneStoriesVisibility = createAction('DONE_STORES_VISIBLE');
+export const setNumberOfStories = createAction('SET_NO_STORIES');
 
 export const epicsReceived = createAction('EPICS_RECEIVED');
 export const storiesReceived = createAction('STORIES_RECEIVED');
@@ -27,7 +28,10 @@ export const fetchStories = createThunk(
   milestoneId => dispatch => {
     const request = _keepFetching(
       next => api.stories.getForMilestone(milestoneId, next),
-      res => dispatch(storiesReceived({ milestoneId, stories: res.data })),
+      res => {
+        dispatch(storiesReceived({ milestoneId, stories: res.data }));
+        dispatch(setNumberOfStories({ milestoneId, count: res.total }));
+      },
     );
 
     return request.then(() => milestoneId);

@@ -18,8 +18,12 @@
 
   border-bottom: 1px solid rgba(39, 38, 53, 0.4);
   display: flex;
-  /*justify-content: space-between;*/
+  align-items: center;
+  justify-content: space-between;
+
   padding: 5px 20px 0 0;
+
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
 
 .titleAndLoader {
@@ -36,8 +40,10 @@
   background: transparent;
   border: 0;
   margin: 0;
-  ouline: 0;
+  outline: none;
   cursor: pointer;
+  width: 150px;
+  text-align: right;
 }
 
 .toggleDoneButton:hover {
