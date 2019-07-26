@@ -40,15 +40,7 @@ const MilestoneStats = props => {
           {' '}
           <FontAwesomeIcon icon={solidIcons.faCheck} />
         </span>
-        {Math.round(percentDone * 100)}%
-      </div>
-
-      <div className={styles.stat}>
-        <span className={styles.icon}>
-          {' '}
-          <FontAwesomeIcon icon={solidIcons.faCheck} />
-        </span>
-        {doneStories} stories done
+        {doneStories} done ( {Math.round(percentDone * 100)}%)
       </div>
     </div>
   );
