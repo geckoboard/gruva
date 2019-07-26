@@ -1,9 +1,14 @@
+@font-face {
+  font-family: Visuelt;
+  src: url("./visuelttrial-regular.otf") format("opentype");
+}
+
 html, body {
   height: 100%;
 }
 
 body {
-  font-family: "Changa", Helvetica, Arial, sans-serif;
+  font-family: "Visuelt", Helvetica, Arial, sans-serif;
   color: #272635;
   width: 100%;
   line-height: 1.4rem;
