@@ -8,12 +8,14 @@ import styles from './epic.css';
 const Epic = props => {
   const {
     epic,
-    epic: { id, completed },
+    epic: { id, completed, started },
     milestoneId,
   } = props;
 
   const classes = classnames(styles.epic, {
     [styles.done]: completed,
+    [styles.doing]: !completed && started,
+    [styles.todo]: !completed && !started,
   });
 
   return (

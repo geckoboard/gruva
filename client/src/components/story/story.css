@@ -43,7 +43,7 @@
   padding: 1px 6px;
   border-radius: 4px;
 
-  transition: background-color .1s;
+  transition: background-color .2s;
 }
 .storyLink:hover {
   color: #272635;
@@ -78,11 +78,11 @@
 }
 
 .done {
-  /*opacity: 0.8;*/
+  opacity: 0.6;
 }
 
 .hideDone {
-  opacity: 0.2;
+  opacity: 0.0;
 }
 
 .bug {

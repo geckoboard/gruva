@@ -1,13 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as icons from '@fortawesome/free-solid-svg-icons';
+import classnames from 'classnames';
+import * as icons from '@fortawesome/free-regular-svg-icons';
+import * as solidIcons from '@fortawesome/free-solid-svg-icons';
 import styles from './epic-header.css';
+
+const getIcon = epic => {
+  const { completed, started } = epic;
+
+  if (completed) {
+    return solidIcons.faCheck;
+  }
+
+  if (started) {
+    return solidIcons.faPaperPlane;
+  }
+
+  return icons.faStickyNote;
+};
 
 const EpicHeader = props => {
   const {
+    epic,
     epic: {
-      completed,
       name,
       stats: {
         num_stories_unstarted: numStoriesUnstarted,
@@ -18,28 +34,31 @@ const EpicHeader = props => {
   } = props;
 
   const numStories = numStoriesUnstarted + numStoriesStarted + numStoriesDone;
+  const icon = getIcon(epic);
+  const iconClasses = classnames(
+    styles.titleIcon,
+    styles[`icon-${icon.iconName}`],
+  );
 
   return (
     <div className={styles.epicHeader}>
       <h2 className={styles.name}>
-        {name}{' '}
-        {completed && (
-          <span className={styles.icon}>
-            <FontAwesomeIcon icon={icons.faCheck} />
-          </span>
-        )}
+        <span className={iconClasses}>
+          <FontAwesomeIcon icon={icon} />
+        </span>{' '}
+        {name}
       </h2>
       <div className={styles.epicStats}>
         <div className={styles.done}>
           <span className={styles.icon}>
-            <FontAwesomeIcon icon={icons.faCheck} />
+            <FontAwesomeIcon icon={solidIcons.faCheck} />
           </span>
           {numStoriesDone} / {numStories} stories
         </div>
         {!!numStoriesStarted && (
           <div className={styles.doing}>
             <span className={styles.icon}>
-              <FontAwesomeIcon icon={icons.faPaperPlane} />
+              <FontAwesomeIcon icon={solidIcons.faPaperPlane} />
             </span>
             {numStoriesStarted}
           </div>

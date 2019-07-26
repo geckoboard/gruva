@@ -6,6 +6,7 @@ import styles from './epics.css';
 
 const sortEpics = epics => {
   return sortBy(epics.filter(epic => !epic.archived), [
+    'started',
     'completed',
     'position',
   ]);
