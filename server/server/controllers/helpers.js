@@ -14,6 +14,7 @@ const whitelistEpic = epic => ({
   started: epic.started,
   updated_at: epic.updated_at,
   position: epic.position,
+  milestone_id: epic.milestone_id,
 });
 
 const whitelistStory = story => ({

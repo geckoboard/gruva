@@ -16,5 +16,7 @@ module.exports = app => {
     storiesController.forMilestone,
   );
 
+  app.get('/api/epics/:epic_id', epicsController.get);
+
   app.put('/api/stories/:story_id/update', storiesController.update);
 };

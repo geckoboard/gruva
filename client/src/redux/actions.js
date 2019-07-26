@@ -12,6 +12,10 @@ export const fetchMilestones = createThunk('FETCH_MILESTONES', () => () => {
   return api.milestones.get();
 });
 
+export const fetchEpic = createThunk('FETCH_EPIC', epicId => () => {
+  return api.epics.get(epicId);
+});
+
 export const fetchEpics = createThunk(
   'FETCH_EPICS',
   milestoneId => dispatch => {
@@ -42,12 +46,16 @@ export const fetchStories = createThunk(
 export const updateStoryEpicId = createThunk(
   'UPDATE_EPIC_ID',
   payload => dispatch => {
-    const { storyId, newEpicId } = payload;
+    const { storyId, previousEpicId, newEpicId } = payload;
     dispatch(setStoryEpicId(payload));
 
     // TODO: Revert back if update errors
 
-    api.stories.update(storyId, { epic_id: newEpicId });
+    return api.stories.update(storyId, { epic_id: newEpicId }).then(story => {
+      dispatch(fetchEpic(previousEpicId));
+      dispatch(fetchEpic(newEpicId));
+      return story;
+    });
   },
 );
 

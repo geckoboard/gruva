@@ -27,4 +27,22 @@ const forMilestone = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = { forMilestone };
+const get = (req, res, next) => {
+  const qs = {
+    token: API_KEY,
+  };
+
+  const options = {
+    uri: `${API_URL}/epics/${req.params.epic_id}`,
+    qs,
+    json: true,
+  };
+
+  return request(options)
+    .then(epic => {
+      res.status(200).send(whitelistEpic(epic));
+    })
+    .catch(next);
+};
+
+module.exports = { get, forMilestone };
