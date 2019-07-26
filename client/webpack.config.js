@@ -80,6 +80,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(ttf|otf)$/,
+        loader: 'url-loader?limit=100000',
+      },
     ],
   },
   plugins: plugins,
