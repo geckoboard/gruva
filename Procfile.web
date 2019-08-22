@@ -1,0 +1,2 @@
+webserver: env PORT=8080 yarn start
+auth: ./bin/oauth2_proxy -http-address=:$PORT -email-domain="geckoboard.com" -upstream=http://127.0.0.1:8080/ -skip-auth-regex="^/api/webhook"
