@@ -10,6 +10,7 @@ module.exports = app => {
     }),
   );
 
+  // API
   app.get('/api/milestones', milestonesController.list);
   app.get('/api/milestones/:milestone_id/epics', epicsController.forMilestone);
   app.get(
@@ -21,9 +22,11 @@ module.exports = app => {
 
   app.put('/api/stories/:story_id/update', storiesController.update);
 
+  // App URLS
   app.get('/milestones', (req, res) =>
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
+
   app.get('/milestones/:milestone_id', (req, res) =>
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
