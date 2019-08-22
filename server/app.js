@@ -23,6 +23,9 @@ const createApp = () => {
   // Set CORS headers
   app.use(cors());
 
+  // Serve our static files
+  app.use(express.static(__dirname + '/../client/dist'));
+
   // Require our routes into the application.
   require('./server/routes')(app);
 
