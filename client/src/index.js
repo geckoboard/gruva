@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import createStore from './redux/create-store';
 import MilestonesPage from './components/milestones-page';
 import MilestonePage from './components/milestone-page';
@@ -15,6 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div className={styles.container}>
+        <Route exact path="/" render={() => <Redirect to="/milestones" />} />
         <Route path="/milestones" component={MilestonesPage} />
         <Route path="/milestones/:milestoneId" component={MilestonePage} />
       </div>
