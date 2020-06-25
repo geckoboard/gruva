@@ -25,6 +25,7 @@ const whitelistStory = story => ({
   completed: story.completed,
   started: story.started,
   updated_at: story.updated_at,
+  owner_ids: story.owner_ids,
   position: story.position,
   blocker: story.blocker,
   blocked: story.blocked,
@@ -32,7 +33,16 @@ const whitelistStory = story => ({
   app_url: story.app_url,
 });
 
+const whitelistMember = member => ({
+  id: member.id,
+  profile: {
+    name: member.profile.name,
+    display_icon: member.profile.display_icon,
+  },
+});
+
 module.exports = {
+  whitelistMember,
   whitelistMilestone,
   whitelistEpic,
   whitelistStory,

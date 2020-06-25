@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import milestones from './milestone-reducer';
 import epics from './epics-reducer';
+import global from './global-reducer';
+import members from './members-reducer';
+import milestones from './milestone-reducer';
 import stories from './stories-reducer';
 
-export default combineReducers({ milestones, epics, stories });
+export default combineReducers({ epics, global, members, milestones, stories });

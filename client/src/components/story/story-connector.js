@@ -5,12 +5,28 @@ import Story from './story';
 
 const mapStateToProps = (state, ownProps) => {
   const {
+    global: { currentPage },
+    members,
     stories: { doneVisible },
   } = state;
-  const { isEpicDone } = ownProps;
+  const {
+    isEpicDone,
+    story: { owner_ids = [] },
+  } = ownProps;
+
+  const owners = owner_ids.reduce((owners, id) => {
+    const member = members.byId[id];
+    if (member) {
+      owners.push(member);
+    }
+
+    return owners;
+  }, []);
 
   return {
     doneVisible: doneVisible || isEpicDone,
+    currentPage,
+    owners,
   };
 };
 

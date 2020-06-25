@@ -1,4 +1,5 @@
 const path = require('path');
+const membersController = require('../controllers').members;
 const milestonesController = require('../controllers').milestones;
 const epicsController = require('../controllers').epics;
 const storiesController = require('../controllers').stories;
@@ -20,6 +21,8 @@ module.exports = app => {
 
   app.get('/api/epics/:epic_id', epicsController.get);
 
+  app.get('/api/members', membersController.list);
+
   app.put('/api/stories/:story_id/update', storiesController.update);
 
   // App URLS
@@ -27,7 +30,11 @@ module.exports = app => {
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
 
-  app.get('/milestones/:milestone_id', (req, res) =>
+  app.get('/milestones/:milestone_id/overview', (req, res) =>
+    res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
+  );
+
+  app.get('/milestones/:milestone_id/standup', (req, res) =>
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
 };

@@ -9,8 +9,8 @@ Before getting started, login to clubhouse to generate an API key. You can do th
 
 ### 1. Clone the repo and install node modules
 ```
-git clone git@github.com:geckoboard/keeper.git
-cd keeper
+git clone git@github.com:geckoboard/gruva.git
+cd gruva
 yarn
 ```
 
@@ -20,7 +20,7 @@ Create a new file in the `/server` directory named `.env`. Add the clubhouse API
 CLUBHOUSE_API_KEY=YOUR_API_KEY
 ```
 
-### 3. Start the keeper server and client
+### 3. Start the gruva server and client
 ```
 cd server && yarn start
 ```
