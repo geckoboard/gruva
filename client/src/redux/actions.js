@@ -1,6 +1,8 @@
 import { createAction, createThunk } from 'redan';
 import api from '../api';
 
+export const setCurrentPage = createAction('SET_CURRENT_PAGE');
+
 export const toggleDoneStoriesVisibility = createAction('DONE_STORES_VISIBLE');
 export const setNumberOfStories = createAction('SET_NO_STORIES');
 export const setStoryEpicId = createAction('SET_STORY_EPIC_ID');
@@ -26,6 +28,10 @@ export const fetchEpics = createThunk(
 
     return request.then(() => milestoneId);
   },
+);
+
+export const fetchMembers = createThunk('FETCH_MEMBERS', () => () =>
+  api.members.get(),
 );
 
 export const fetchStories = createThunk(

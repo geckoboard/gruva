@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleDoneStoriesVisibility } from '../../redux/actions';
+import { setCurrentPage, toggleDoneStoriesVisibility } from '../../redux/actions';
 import StandupPage from './standup-page';
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,6 +27,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    init: () => {
+      dispatch(setCurrentPage('standup'));
+    },
     toggleDoneStoriesVisibility: () => {
       dispatch(toggleDoneStoriesVisibility());
     },

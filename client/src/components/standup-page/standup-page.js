@@ -16,6 +16,7 @@ class StandupPage extends Component {
   }
 
   componentDidMount() {
+    this.props.init();
     document.addEventListener('keyup', this.handleKeypress);
   }
 
@@ -57,6 +58,7 @@ class StandupPage extends Component {
 }
 
 StandupPage.propTypes = {
+  init: PropTypes.func,
   isLoading: PropTypes.bool,
   match: PropTypes.object,
   doneStoriesVisible: PropTypes.bool,

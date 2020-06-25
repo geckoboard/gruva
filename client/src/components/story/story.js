@@ -34,10 +34,36 @@ const getIcons = story => {
   return storyIcons;
 };
 
+const getInitials = name => {
+  return name
+    .split(' ')
+    .map(n => n.slice(0, 1).toUpperCase())
+    .join('');
+};
+
+const renderOwners = owners => {
+  return owners.map(owner => {
+    const {
+      id,
+      profile: { name, display_icon: displayIcon },
+    } = owner;
+    if (displayIcon) {
+      return (
+        <li key={id}>
+          <img src={displayIcon.url} alt={name} />
+        </li>
+      );
+    }
+    return <li key={owner.id}>{getInitials(name)}</li>;
+  });
+};
+
 const Story = props => {
   const {
+    currentPage,
     doneVisible,
     isLoadingStories,
+    owners,
     setEpicId,
     story,
     story: { id, app_url: storyHref, completed, name, story_type: storyType },
@@ -86,6 +112,9 @@ const Story = props => {
           </span>
           {id}
         </a>
+        {currentPage === 'standup' && (
+          <ul className={styles.owners}>{renderOwners(owners)}</ul>
+        )}
         <div className={styles.icons}>
           {storyIcons.map(icon => {
             const iconClasses = classnames(
@@ -104,9 +133,15 @@ const Story = props => {
   );
 };
 
+Story.defaultProps = {
+  owners: [],
+};
+
 Story.propTypes = {
+  currentPage: PropTypes.oneOf(['overview', 'standup']),
   doneVisible: PropTypes.bool,
   isLoadingStories: PropTypes.bool,
+  owners: PropTypes.array,
   story: PropTypes.object,
   setEpicId: PropTypes.func,
 };

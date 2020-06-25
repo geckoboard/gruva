@@ -1,4 +1,5 @@
 const path = require('path');
+const membersController = require('../controllers').members;
 const milestonesController = require('../controllers').milestones;
 const epicsController = require('../controllers').epics;
 const storiesController = require('../controllers').stories;
@@ -19,6 +20,8 @@ module.exports = app => {
   );
 
   app.get('/api/epics/:epic_id', epicsController.get);
+
+  app.get('/api/members', membersController.list);
 
   app.put('/api/stories/:story_id/update', storiesController.update);
 

@@ -29,11 +29,6 @@
   cursor: grabbing;
 }
 
-.story footer {
-  display: flex;
-  justify-content: space-between;
-}
-
 .name {
   font-size: 0.9rem;
   margin: 0;
@@ -43,8 +38,11 @@
   word-break: break-word;
 }
 
-.icons {
+.story footer {
+  align-items: center;
   display: flex;
+  height: 25px;
+  margin: 5px 0 0 0;
 }
 
 .storyLink {
@@ -60,6 +58,36 @@
   color: #272635;
   background: rgba(0,0,0,.2);
 }
+
+.owners {
+  display: flex;
+  list-style: none;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+.owners li {
+  box-sizing: border-box;
+  color: white;
+  border-radius: 50%;
+  background: grey;
+  display: block;
+  font-weight: bold;
+  height: 25px;
+  margin: 0 2px;
+  overflow: hidden;
+  padding: 3px 0 0 0;
+  text-align: center;
+  width: 25px;
+}
+.owners li img {
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  margin-left: auto;
+}
+
 .typeIcon {
   display: inline-block;
   margin: 0 3px 0 0;

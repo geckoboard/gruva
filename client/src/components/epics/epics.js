@@ -46,7 +46,12 @@ class Epics extends Component {
     return (
       <div className={styles.epics}>
         {sortedEpics.map(epic => (
-          <Epic key={epic.id} epic={epic} milestoneId={milestoneId} />
+          <Epic
+            key={epic.id}
+            epic={epic}
+            milestoneId={milestoneId}
+            currentPage={currentPage}
+          />
         ))}
       </div>
     );
