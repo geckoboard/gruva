@@ -27,7 +27,11 @@ module.exports = app => {
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
 
-  app.get('/milestones/:milestone_id', (req, res) =>
+  app.get('/milestones/:milestone_id/overview', (req, res) =>
+    res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
+  );
+
+  app.get('/milestones/:milestone_id/standup', (req, res) =>
     res.sendFile(path.join(__dirname + '/../../../client/dist/index.html')),
   );
 };

@@ -4,12 +4,19 @@ import { sortBy } from 'lodash';
 import Epic from '../epic';
 import styles from './epics.css';
 
-const sortEpics = epics => {
-  return sortBy(epics.filter(epic => !epic.archived), [
-    'started',
-    'completed',
-    'position',
-  ]);
+const sortEpics = (epics, currentPage) => {
+  let sortOrder = ['started', 'completed', 'position'];
+
+  if (currentPage === 'standup') {
+    // Order by in progress, upcoming, completed
+    sortOrder = [
+      e => !e.started || (e.started && e.completed),
+      e => e.completed,
+      'position',
+    ];
+  }
+
+  return sortBy(epics.filter(epic => !epic.archived), sortOrder);
 };
 
 class Epics extends Component {
@@ -28,13 +35,13 @@ class Epics extends Component {
   }
 
   render() {
-    const { epics, isLoading, milestoneId } = this.props;
+    const { currentPage, epics, isLoading, milestoneId } = this.props;
 
     if (!isLoading && !epics.length) {
       return <div>No epics for this milestone</div>;
     }
 
-    const sortedEpics = sortEpics(epics);
+    const sortedEpics = sortEpics(epics, currentPage);
 
     return (
       <div className={styles.epics}>
@@ -48,6 +55,7 @@ class Epics extends Component {
 
 Epics.defaultProps = {
   epics: [],
+  currentPage: 'overview',
 };
 
 Epics.propTypes = {
@@ -57,6 +65,7 @@ Epics.propTypes = {
   isLoading: PropTypes.bool,
   milestoneId: PropTypes.string,
   fetchData: PropTypes.func,
+  currentPage: PropTypes.oneOf(['overview', 'standup']),
 };
 
 export default Epics;
