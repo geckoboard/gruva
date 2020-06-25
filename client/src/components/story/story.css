@@ -17,7 +17,9 @@
   /*align-items: flex-end;*/
 
   flex-direction: column;
-
+}
+.story:hover {
+  filter: brightness(1.05);
 }
 
 .canDrag {
