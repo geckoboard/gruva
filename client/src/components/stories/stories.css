@@ -1,2 +1,8 @@
 .stories {
 }
+
+.started {
+  border-bottom: 1px solid rgba(39, 38, 53, 0.4);
+  padding: 0 0 20px 0;
+  margin: 0 0 30px 0;
+}
