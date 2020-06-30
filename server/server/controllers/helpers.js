@@ -25,6 +25,7 @@ const whitelistStory = story => ({
   completed: story.completed,
   started: story.started,
   updated_at: story.updated_at,
+  labels: story.labels,
   owner_ids: story.owner_ids,
   position: story.position,
   blocker: story.blocker,

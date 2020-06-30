@@ -45,10 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const StoryConnector = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Story);
+const StoryConnector = connect(mapStateToProps, mapDispatchToProps)(Story);
 
 StoryConnector.propTypes = {
   isEpicDone: PropTypes.bool,

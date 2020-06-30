@@ -41,16 +41,42 @@
 }
 
 .story footer {
+  display: block;
+  margin: 5px 0 0 0;
+}
+
+.upperFooter {
+  margin: 0 0 3px 0;
+}
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.labels li {
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.7rem;
+  margin: 0 2px 2px 0;
+  padding: 0px 5px;
+}
+
+.lowerFooter {
   align-items: center;
   display: flex;
   height: 25px;
-  margin: 5px 0 0 0;
+  justify-content: flex-end;
 }
 
 .storyLink {
   display: inline-block;
   background: rgba(0,0,0,.05);
   font-size: 0.7rem;
+  margin-right: auto;
   padding: 1px 6px;
   border-radius: 4px;
 
@@ -87,7 +113,6 @@
 
 .icons {
   display: flex;
-  margin-left: auto;
 }
 
 .typeIcon {
