@@ -58,6 +58,16 @@ const renderOwners = owners => {
   });
 };
 
+const renderLabels = labels => {
+  return labels.map(label => {
+    return (
+      <li key={label.id} style={{ background: label.color }}>
+        {label.name}
+      </li>
+    );
+  });
+};
+
 const Story = props => {
   const {
     currentPage,
@@ -66,11 +76,18 @@ const Story = props => {
     owners,
     setEpicId,
     story,
-    story: { id, app_url: storyHref, completed, name, story_type: storyType },
+    story: {
+      id,
+      app_url: storyHref,
+      completed,
+      name,
+      story_type: storyType,
+      labels = [],
+    },
   } = props;
 
   const [{ canDrag, isDragging }, dragRef] = useDrag({
-    item: { type: 'STORY', id, epicId: story.epic_id.toString()},
+    item: { type: 'STORY', id, epicId: story.epic_id.toString() },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
       canDrag: !!monitor.canDrag(),
@@ -106,27 +123,35 @@ const Story = props => {
     <div ref={dragRef} className={classes}>
       <h3 className={styles.name}>{name}</h3>
       <footer className={styles.footer}>
-        <a href={storyHref} target="_blank" className={styles.storyLink}>
-          <span className={typeIconClasses}>
-            <FontAwesomeIcon icon={storyTypeIcon} />
-          </span>
-          {id}
-        </a>
-        {currentPage === 'standup' && (
-          <ul className={styles.owners}>{renderOwners(owners)}</ul>
+        {currentPage === 'standup' && labels.length > 0 && (
+          <div className={styles.upperFooter}>
+            <ul className={styles.labels}>{renderLabels(labels)}</ul>
+          </div>
         )}
-        <div className={styles.icons}>
-          {storyIcons.map(icon => {
-            const iconClasses = classnames(
-              styles.icon,
-              styles[`icon-${icon.iconName}`],
-            );
-            return (
-              <div key={icon.iconName} className={iconClasses}>
-                <FontAwesomeIcon icon={icon} />
-              </div>
-            );
-          })}
+
+        <div className={styles.lowerFooter}>
+          <a href={storyHref} target="_blank" className={styles.storyLink}>
+            <span className={typeIconClasses}>
+              <FontAwesomeIcon icon={storyTypeIcon} />
+            </span>
+            {id}
+          </a>
+          <div className={styles.icons}>
+            {storyIcons.map(icon => {
+              const iconClasses = classnames(
+                styles.icon,
+                styles[`icon-${icon.iconName}`],
+              );
+              return (
+                <div key={icon.iconName} className={iconClasses}>
+                  <FontAwesomeIcon icon={icon} />
+                </div>
+              );
+            })}
+          </div>
+          {currentPage === 'standup' && !completed && (
+            <ul className={styles.owners}>{renderOwners(owners)}</ul>
+          )}
         </div>
       </footer>
     </div>
