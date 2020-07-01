@@ -48,6 +48,7 @@ class Epics extends Component {
         {sortedEpics.map(epic => (
           <Epic
             key={epic.id}
+            currentPage={currentPage}
             epic={epic}
             milestoneId={milestoneId}
             currentPage={currentPage}

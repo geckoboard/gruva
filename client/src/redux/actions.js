@@ -9,6 +9,7 @@ export const setStoryEpicId = createAction('SET_STORY_EPIC_ID');
 
 export const epicsReceived = createAction('EPICS_RECEIVED');
 export const storiesReceived = createAction('STORIES_RECEIVED');
+export const workflowsReceived = createAction('WORFKLOWS_RECEIVED');
 
 export const fetchMilestones = createThunk('FETCH_MILESTONES', () => () => {
   return api.milestones.get();
@@ -33,6 +34,20 @@ export const fetchEpics = createThunk(
 export const fetchMembers = createThunk('FETCH_MEMBERS', () => () =>
   api.members.get(),
 );
+
+// For some reason this would sometimes return 204 for the server??
+// export const fetchWorkflows = createThunk('FETCH_WORKFLOWS', () => () => {
+//   console.log('dwaodiod');
+//   return api.workflows.get();
+// });
+export const fetchWorkflows = () => dispatch => {
+  api.workflows
+    .get()
+    .then(res => {
+      dispatch(workflowsReceived(res));
+    })
+    .catch(err => console.log('err', err));
+};
 
 export const fetchStories = createThunk(
   'FETCH_STORIES',

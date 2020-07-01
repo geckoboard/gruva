@@ -76,6 +76,7 @@ class Stories extends Component {
 
 Stories.defaultProps = {
   stories: [],
+  workflowStates: {},
 };
 
 Stories.propTypes = {

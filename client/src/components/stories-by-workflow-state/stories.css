@@ -1,0 +1,20 @@
+.stories {
+}
+
+.storiesSection {
+  border-top: 1px solid rgba(39, 38, 53, 0.4);
+  margin: 30px 0 0 0;
+  padding: 20px 0 0 0;
+}
+.storiesSection:first-of-type {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.storiesSection h2 {
+  color: rgba(39, 38, 53, .8);
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
