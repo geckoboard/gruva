@@ -3,6 +3,7 @@ const membersController = require('../controllers').members;
 const milestonesController = require('../controllers').milestones;
 const epicsController = require('../controllers').epics;
 const storiesController = require('../controllers').stories;
+const workflowsController = require('../controllers').workflows;
 
 module.exports = app => {
   app.get('/api', (req, res) =>
@@ -19,10 +20,10 @@ module.exports = app => {
     storiesController.forMilestone,
   );
 
-  app.get('/api/epics/:epic_id', epicsController.get);
-
   app.get('/api/members', membersController.list);
+  app.get('/api/workflows', workflowsController.list);
 
+  app.get('/api/epics/:epic_id', epicsController.get);
   app.put('/api/stories/:story_id/update', storiesController.update);
 
   // App URLS

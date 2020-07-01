@@ -27,12 +27,18 @@ const whitelistStory = story => ({
   updated_at: story.updated_at,
   labels: story.labels,
   owner_ids: story.owner_ids,
+  project_id: story.project_id,
   position: story.position,
   blocker: story.blocker,
   blocked: story.blocked,
   story_type: story.story_type,
   app_url: story.app_url,
+  workflow_state_id: story.workflow_state_id,
 });
+
+const whitelistWorkflow = workflow => {
+  return { project_ids: workflow.project_ids, states: workflow.states };
+};
 
 const whitelistMember = member => ({
   id: member.id,
@@ -47,4 +53,5 @@ module.exports = {
   whitelistMilestone,
   whitelistEpic,
   whitelistStory,
+  whitelistWorkflow,
 };
