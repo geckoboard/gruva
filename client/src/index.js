@@ -28,12 +28,12 @@ ReactDOM.render(
             component={StandupPage}
           />
 
-          {/* Legacy route, keep it to redirect to new overview route */}
+          {/* Legacy route, keep it to redirect to new standup route */}
           <Route
             path="/milestones/:milestoneId"
             render={props => (
               <Redirect
-                to={`/milestones/${props.match.params.milestoneId}/overview`}
+                to={`/milestones/${props.match.params.milestoneId}/standup`}
               />
             )}
           />
