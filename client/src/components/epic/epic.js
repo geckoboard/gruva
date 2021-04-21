@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useDrop } from 'react-dnd';
-import Stories from '../stories';
 import StoriesByWorkflowState from '../stories-by-workflow-state';
 import EpicHeader from '../epic-header/epic-header';
 import styles from './epic.css';
 
 const Epic = props => {
   const {
-    currentPage,
     epic,
     epic: { id, completed, started },
     milestoneId,
@@ -39,14 +37,11 @@ const Epic = props => {
     [styles.isOver]: isOver && canDrop,
   });
 
-  const StoriesComponent =
-    currentPage === 'standup' ? StoriesByWorkflowState : Stories;
-
   return (
     <div className={classes}>
       <EpicHeader epic={epic} />
       <div ref={dropRef} className={storiesClasses}>
-        <StoriesComponent
+        <StoriesByWorkflowState
           epicId={id}
           milestoneId={milestoneId}
           isEpicDone={completed}
@@ -57,7 +52,6 @@ const Epic = props => {
 };
 
 Epic.propTypes = {
-  currentPage: PropTypes.string,
   epic: PropTypes.object,
   milestoneId: PropTypes.string,
 };

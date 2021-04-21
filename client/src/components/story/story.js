@@ -70,7 +70,6 @@ const renderLabels = labels => {
 
 const Story = props => {
   const {
-    currentPage,
     doneVisible,
     isLoadingStories,
     owners,
@@ -123,7 +122,7 @@ const Story = props => {
     <div ref={dragRef} className={classes}>
       <h3 className={styles.name}>{name}</h3>
       <footer className={styles.footer}>
-        {currentPage === 'standup' && labels.length > 0 && (
+        {labels.length > 0 && (
           <div className={styles.upperFooter}>
             <ul className={styles.labels}>{renderLabels(labels)}</ul>
           </div>
@@ -149,7 +148,7 @@ const Story = props => {
               );
             })}
           </div>
-          {currentPage === 'standup' && !completed && (
+          {!completed && (
             <ul className={styles.owners}>{renderOwners(owners)}</ul>
           )}
         </div>
@@ -163,7 +162,6 @@ Story.defaultProps = {
 };
 
 Story.propTypes = {
-  currentPage: PropTypes.oneOf(['overview', 'standup']),
   doneVisible: PropTypes.bool,
   isLoadingStories: PropTypes.bool,
   owners: PropTypes.array,
